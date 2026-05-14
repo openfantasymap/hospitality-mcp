@@ -342,6 +342,9 @@ Toril. Same architecture, different world.
 
 # Thank you
 
+**Marco Montanari**
+**marco.montanari@openhistorymap.org**
+
 **OFM — Hospitality MCP**
 13 tools · open data · Dockerized · LLM-ready
 
