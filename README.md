@@ -120,7 +120,13 @@ For Docker, `MCP_HOST_PORT` sets the host-side published port (container stays o
 ## Presentation
 
 `presentation/slides.md` is a [Marp](https://marp.app) deck — *"From Open Data to
-Agent-Queryable Worlds"* — with the OFM theme in `presentation/ofm.css`. Render it:
+Agent-Queryable Worlds"* — with the OFM theme in `presentation/ofm.css`.
+
+It is published to GitHub Pages on every push to `main`:
+**https://openfantasymap.github.io/hospitality-mcp/**
+(`/slides.pdf` for the PDF export).
+
+Render it locally:
 
 ```bash
 cd presentation
