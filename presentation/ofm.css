@@ -1,0 +1,133 @@
+/* @theme ofm */
+/* Open Fantasy Maps — Marp theme. Tokens mirror front/ofm-map-2/src/styles.scss */
+
+@import 'default';
+@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@400;600;700&family=Public+Sans:wght@400;600;700&family=Fragment+Mono&display=swap');
+
+:root {
+  --ofm-surface:        oklch(0.21 0.012 55);
+  --ofm-surface-raised: oklch(0.26 0.015 55);
+  --ofm-surface-high:   oklch(0.32 0.018 55);
+  --ofm-border:         oklch(0.36 0.012 55);
+  --ofm-border-faint:   oklch(0.29 0.010 55);
+  --ofm-text:           oklch(0.95 0.010 80);
+  --ofm-text-muted:     oklch(0.72 0.015 70);
+  --ofm-text-faint:     oklch(0.55 0.012 65);
+  --ofm-accent:         oklch(0.70 0.18 32);
+  --ofm-accent-hover:   oklch(0.80 0.15 32);
+  --ofm-accent-wash:    oklch(0.70 0.18 32 / 0.12);
+  --ofm-font-display:   'Spectral', 'Palatino Linotype', Georgia, serif;
+  --ofm-font-body:      'Public Sans', -apple-system, 'Segoe UI', Arial, sans-serif;
+  --ofm-font-mono:      'Fragment Mono', ui-monospace, Menlo, Consolas, monospace;
+}
+
+section {
+  background:
+    radial-gradient(120% 80% at 100% 0%, oklch(0.26 0.015 55) 0%, transparent 60%),
+    var(--ofm-surface);
+  color: var(--ofm-text);
+  font-family: var(--ofm-font-body);
+  font-size: 1.6rem;
+  line-height: 1.5;
+  padding: 64px 70px 84px;
+  border-top: 6px solid var(--ofm-accent);
+}
+
+h1, h2, h3 {
+  font-family: var(--ofm-font-display);
+  color: var(--ofm-accent);
+  font-weight: 700;
+  letter-spacing: 0.005em;
+}
+h1 { font-size: 2.05rem; }
+h2 {
+  font-size: 1.7rem;
+  border-bottom: 2px solid var(--ofm-border);
+  padding-bottom: 0.2em;
+  margin-bottom: 0.6em;
+}
+h3 { color: var(--ofm-text-muted); font-weight: 600; }
+
+strong { color: var(--ofm-accent-hover); }
+em { color: var(--ofm-text); }
+a { color: var(--ofm-accent-hover); text-decoration: none; }
+
+ul > li::marker, ol > li::marker { color: var(--ofm-accent); }
+li { margin: 0.25em 0; }
+
+code {
+  font-family: var(--ofm-font-mono);
+  background: var(--ofm-surface-raised);
+  color: var(--ofm-accent-hover);
+  border: 1px solid var(--ofm-border-faint);
+  border-radius: 4px;
+  padding: 0.04em 0.34em;
+  font-size: 0.92em;
+}
+pre {
+  background: var(--ofm-surface-raised);
+  border: 1px solid var(--ofm-border);
+  border-left: 4px solid var(--ofm-accent);
+  border-radius: 6px;
+}
+pre code {
+  background: transparent;
+  border: none;
+  color: var(--ofm-text);
+  padding: 0;
+}
+
+table { border-collapse: collapse; font-size: 1.3rem; }
+th, td { border: 1px solid var(--ofm-border-faint); padding: 0.42em 0.72em; }
+th {
+  background: var(--ofm-accent-wash);
+  color: var(--ofm-accent-hover);
+  font-family: var(--ofm-font-display);
+  border-bottom: 2px solid var(--ofm-accent);
+  text-align: left;
+}
+tr:nth-child(even) td { background: var(--ofm-surface-raised); }
+
+blockquote {
+  border-left: 4px solid var(--ofm-accent);
+  color: var(--ofm-text-muted);
+  padding-left: 0.8em;
+}
+
+header {
+  color: var(--ofm-text-faint);
+  font-family: var(--ofm-font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.02em;
+}
+footer { color: var(--ofm-text-faint); font-size: 0.66rem; }
+section::after {
+  color: var(--ofm-text-faint);
+  font-family: var(--ofm-font-mono);
+  font-size: 0.7rem;
+}
+
+/* Title / closing slides — opt in with `<!-- _class: lead -->` */
+section.lead {
+  justify-content: center;
+  text-align: center;
+}
+section.lead h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.1em;
+}
+section.lead h3 {
+  color: var(--ofm-text-muted);
+  font-weight: 400;
+  margin-top: 0;
+}
+section.lead strong { color: var(--ofm-accent); }
+section.lead::before {
+  content: "◆  OPEN FANTASY MAPS  ◆";
+  display: block;
+  font-family: var(--ofm-font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.32em;
+  color: var(--ofm-accent);
+  margin-bottom: 1.4em;
+}

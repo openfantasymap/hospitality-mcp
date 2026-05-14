@@ -1,0 +1,12 @@
+.claude/
+.env
+.venv/
+__pycache__/
+*.pyc
+
+# Reference artifact — downloadable from the API, not source
+swagger.json
+
+# Rendered presentation outputs (build from presentation/slides.md)
+presentation/slides.pdf
+presentation/slides.html

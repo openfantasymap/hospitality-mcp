@@ -1,0 +1,7 @@
+.venv/
+.claude/
+swagger.json
+.env
+.git/
+__pycache__/
+*.pyc
