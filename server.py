@@ -1,10 +1,11 @@
 """OFM Hospitality MCP server.
 
-Wraps the South Tyrol Open Data Hub Tourism API
-(https://tourism.api.opendatahub.com) as a set of MCP tools an LLM can use to
-assemble a fully customized vacation plan for the managed area: accommodations,
-activities, gastronomy, points of interest, events, suggested tours, editorial
-inspiration, venues and weather forecasts.
+Wraps an Open Data Hub Tourism API instance (South Tyrol by default; the
+upstream base URL and human-readable region name are configurable via the
+OFM_TOURISM_BASE_URL and OFM_REGION_NAME environment variables) as a set of
+MCP tools an LLM can use to assemble a fully customized vacation plan for the
+managed area: accommodations, activities, gastronomy, points of interest,
+events, suggested tours, editorial inspiration, venues and weather forecasts.
 
 Design: a curated set of planning-oriented tools plus a `raw_api_call` escape
 hatch for any endpoint/filter not covered by the curated set.
@@ -30,18 +31,20 @@ BASE_URL = os.environ.get(
     "OFM_TOURISM_BASE_URL", "https://tourism.api.opendatahub.com"
 ).rstrip("/")
 DEFAULT_LANGUAGE = os.environ.get("OFM_DEFAULT_LANGUAGE", "en")
+REGION_NAME = os.environ.get("OFM_REGION_NAME", "South Tyrol")
 
 mcp = FastMCP(
     "ofm-hospitality",
     instructions=(
-        "Tools for planning a vacation in South Tyrol using the Open Data Hub "
-        "Tourism API. Typical flow: (1) call resolve_location to turn a place "
-        "name into a locfilter token, (2) search accommodations / activities / "
-        "events / trips constrained to that location and the travel dates, "
-        "(3) call get_weather_forecast for the area, (4) call get_detail for "
-        "full information on any item the traveller is interested in. Use "
-        "list_filter_options to discover valid bitmask/type filter values. Use "
-        "raw_api_call only for endpoints the curated tools do not cover."
+        f"Tools for planning a vacation in {REGION_NAME} using the Open Data "
+        "Hub Tourism API. Typical flow: (1) call resolve_location to turn a "
+        "place name into a locfilter token, (2) search accommodations / "
+        "activities / events / trips constrained to that location and the "
+        "travel dates, (3) call get_weather_forecast for the area, (4) call "
+        "get_detail for full information on any item the traveller is "
+        "interested in. Use list_filter_options to discover valid bitmask/type "
+        "filter values. Use raw_api_call only for endpoints the curated tools "
+        "do not cover."
     ),
 )
 

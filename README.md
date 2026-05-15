@@ -39,6 +39,17 @@ docker compose up -d --build
 
 Point any MCP client at `http://<host>:8750/mcp` (streamable HTTP transport).
 
+### Run the published image (no clone needed)
+
+Multi-arch images (`amd64` + `arm64`) are published to GitHub Container Registry on every push to `main` and on `v*` tags:
+
+```bash
+docker run -d --name ofm-hospitality-mcp -p 8750:8750 \
+  ghcr.io/openfantasymap/hospitality-mcp:latest
+```
+
+Available tags: `latest`, `main`, `vX.Y.Z` (and `vX.Y` / `vX`), `sha-<short>`.
+
 ### Run without Docker
 
 Requires Python 3.10+.
@@ -101,6 +112,7 @@ All optional — see `.env.example`. Set via environment or a `.env` file.
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `OFM_TOURISM_BASE_URL` | `https://tourism.api.opendatahub.com` | Tourism API base URL |
+| `OFM_REGION_NAME` | `South Tyrol` | Human-readable region name injected into the MCP server's LLM-facing instructions. Change it alongside `OFM_TOURISM_BASE_URL` when pointing the server at a different Open Data Hub instance. |
 | `OFM_DEFAULT_LANGUAGE` | `en` | Default content language (`de`, `it`, `en`, `nl`, `cs`, `pl`, `fr`, `ru`) |
 | `MCP_HOST` | `0.0.0.0` | Bind address |
 | `MCP_PORT` | `8750` | Bind port |

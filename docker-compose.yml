@@ -6,6 +6,7 @@ services:
       - "${MCP_HOST_PORT:-8750}:8750"
     environment:
       OFM_TOURISM_BASE_URL: ${OFM_TOURISM_BASE_URL:-https://tourism.api.opendatahub.com}
+      OFM_REGION_NAME: ${OFM_REGION_NAME:-South Tyrol}
       OFM_DEFAULT_LANGUAGE: ${OFM_DEFAULT_LANGUAGE:-en}
       MCP_HOST: 0.0.0.0
       MCP_PORT: 8750

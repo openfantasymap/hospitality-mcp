@@ -9,7 +9,8 @@ COPY server.py .
 
 ENV MCP_HOST=0.0.0.0 \
     MCP_PORT=8750 \
-    MCP_PATH=/mcp
+    MCP_PATH=/mcp \
+    OFM_REGION_NAME="South Tyrol"
 
 EXPOSE 8750
 
