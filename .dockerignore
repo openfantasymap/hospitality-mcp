@@ -5,3 +5,9 @@ swagger.json
 .git/
 __pycache__/
 *.pyc
+tests/
+pytest.ini
+requirements-dev.txt
+.pytest_cache/
+.github/
+presentation/

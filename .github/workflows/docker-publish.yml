@@ -1,4 +1,4 @@
-name: Publish Docker image
+name: CI
 
 on:
   push:
@@ -7,6 +7,9 @@ on:
     paths:
       - 'server.py'
       - 'requirements.txt'
+      - 'requirements-dev.txt'
+      - 'pytest.ini'
+      - 'tests/**'
       - 'Dockerfile'
       - '.dockerignore'
       - '.github/workflows/docker-publish.yml'
@@ -15,6 +18,9 @@ on:
     paths:
       - 'server.py'
       - 'requirements.txt'
+      - 'requirements-dev.txt'
+      - 'pytest.ini'
+      - 'tests/**'
       - 'Dockerfile'
       - '.dockerignore'
       - '.github/workflows/docker-publish.yml'
@@ -29,11 +35,27 @@ permissions:
   packages: write
 
 concurrency:
-  group: docker-publish-${{ github.ref }}
+  group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
+  test:
+    name: pytest (python:3.12-slim)
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.12-slim
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: pip install --no-cache-dir -r requirements-dev.txt
+
+      - name: Run test suite
+        run: pytest -v
+
   build-and-push:
+    name: Build & publish image
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
